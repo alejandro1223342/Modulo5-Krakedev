@@ -35,15 +35,16 @@ mi_auto = Auto("Toyota", "Corolla", 2022)
 mi_auto.mostrar_informacion()
 mi_auto.estado_auto()
 
-mi_auto.realizar_viaje(15000)
+mi_auto.actualizar_kilometraje(15000)
 mi_auto.mostrar_informacion()
 mi_auto.estado_auto()
 
-mi_auto.realizar_viaje(90000)
+mi_auto.realizar_viaje(60000)
 mi_auto.mostrar_informacion()
 mi_auto.estado_auto()
 
-mi_auto.realizar_viaje(-500)  # Intento inválido
+mi_auto.actualizar_kilometraje(10000)  #  kilometraje menor al actual
+mi_auto.realizar_viaje(-500)           # kilómetros negativos
 
 
         
