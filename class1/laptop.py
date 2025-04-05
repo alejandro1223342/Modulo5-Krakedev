@@ -23,6 +23,15 @@ class Laptop :
             "BATERIA": "OK" if random.choice([True, False]) else "Cambiar de batería"
         }
         return resultado
+    #Polimorfismo
+    def realizar_informe_usi(self):
+        resultado_informe = {
+            "Tipo": "Generica",
+            "Uso Recomendado": "Tareas Cotidianas",
+            "Horas de uso": 5,
+            "Diagnostico actual" : self.realizar_diagnostico_sistema() 
+        }
+        return resultado_informe
             
         
     @staticmethod
