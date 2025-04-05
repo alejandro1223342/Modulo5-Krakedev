@@ -18,3 +18,11 @@ class Laptop :
         if Laptop1.costo == Laptop2.costo:
             return "Los costos son iguales"
         return "Los costos son diferentes"
+    
+    #Referencia a la propia clase
+    @classmethod
+    def asus_laptop (cls, costo) :
+        marca = "asus"
+        procesador = "i5"
+        memoria = 16
+        return cls(marca,procesador,memoria,costo)
