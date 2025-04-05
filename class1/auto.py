@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Auto :
     def __init__(self, marca, modelo, año, kilometraje = 0):
         self.marca = marca
@@ -30,21 +32,36 @@ class Auto :
             print("Ya estoy usado")
         else:
             print("¡Ya déjame descansar por favor!")
+    
+    # metodo de clase para crear un toyota nuevo del año actual
+    @classmethod
+    def toyota_nuevo(cls, modelo):
+        año_actual = datetime.now().year
+        return cls("Toyota", modelo, año_actual, 0)
 
-mi_auto = Auto("Toyota", "Corolla", 2022)
-mi_auto.mostrar_informacion()
-mi_auto.estado_auto()
+    # metodo estatico para comparar kilometraje de dos autos
+    @staticmethod
+    def mismo_kilometraje(auto1, auto2):
+        if auto1.kilometraje == auto2.kilometraje:
+            return "Tienen el mismo kilometraje"
+        else:
+            return "No tienen el mismo kilometraje"
 
-mi_auto.actualizar_kilometraje(15000)
-mi_auto.mostrar_informacion()
-mi_auto.estado_auto()
 
-mi_auto.realizar_viaje(60000)
-mi_auto.mostrar_informacion()
-mi_auto.estado_auto()
+    # metodo de clase adicional crear un auto usado con parámetros
+    @classmethod
+    def crear_usado(cls, marca, modelo, año, kilometraje):
+        return cls(marca, modelo, año, kilometraje)
 
-mi_auto.actualizar_kilometraje(10000)  #  kilometraje menor al actual
-mi_auto.realizar_viaje(-500)           # kilómetros negativos
+
+    # metodo estático adicional validar si un kilometraje es válido (no negativo)
+    @staticmethod
+    def kilometraje_valido(kilometraje):
+        if kilometraje >= 0:
+            return "El kilometraje es válido."
+        else:
+            return "Error: El kilometraje no puede ser negativo."
+
 
 
         
