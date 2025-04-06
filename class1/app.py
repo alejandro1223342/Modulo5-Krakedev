@@ -1,12 +1,14 @@
 from laptop_gaming import Laptop_Gaming
 import tkinter as tk
 from tkinter import ttk
+from PIL import Image, ImageTk
+import random
 
 class App:
     def __init__(self, root):
         self.root = root
         self.laptops = []
-        self.imagenes = []
+        self.imagenes = ["C:\\inetpub\\wwwroot\\modulo5\\class1\\img\\laptoG.jpg"]
 
         root.title("Ingresar Datos")
 
@@ -37,13 +39,26 @@ class App:
 
         self.mostrar_laptops = tk.Text(self.root, height=10,width=50)
         self.mostrar_laptops.grid(row=6,column=1,columnspan=2)
+
+        self.canva = tk.Canvas(self.root, width=200, height=200)
+        self.canva.grid(row=1, column=3, rowspan=6)
         
     def agregar_laptop(self):   
         nueva_laptop = Laptop_Gaming(self.marca.get(),self.procesador.get(), self.memoria.get(),self.tar_grafica.get(),self.precio.get())
         self.laptops.append(nueva_laptop)
         # print(self.laptops[0])
         self.mostrar_laptops.insert(tk.END,f"{nueva_laptop}")
-        
+
+        self.mostrar_imagen_aleatorias()
+    
+    def mostrar_imagen_aleatorias(self) :
+        imagen_path = random.choice(self.imagenes)
+        imagen = Image.open(imagen_path)
+        imagen = imagen.resize((200,200), Image.Resampling.LANCZOS)
+        photo = ImageTk.PhotoImage(imagen)
+
+        self.canva.create_image(0,0, anchor = tk.NW, image = photo)
+        self.canva.image= photo
         pass
 
 
